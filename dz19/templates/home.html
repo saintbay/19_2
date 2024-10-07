@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Hello{% if username %} {{ username }}{% endif %}!</h1>
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>
+    {% else %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <button type="submit">Войти</button>
+        </form>
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <button type="submit">Регистрация</button>
+        </form>
+    {% endif %}
+    <p>user: ErkXn_dt68</p>
+    <p>password:MrTedd2552</p>
+</body>
+</html>
